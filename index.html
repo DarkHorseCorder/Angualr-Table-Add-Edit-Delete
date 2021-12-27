@@ -1,0 +1,86 @@
+<html>
+<head>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <title>Angular Custom Table Edit</title>
+        <style>
+      #mytable input{
+          width:100%;
+        }
+</style>
+</head>
+<body ng-app="myApp" ng-controller="MainController">
+ 
+      <h1 align="center" style="color:#428bca">Custom Table Edit </h1>
+
+<div class="container">
+     <div class="row">
+      <button type="button" style="float:right;margin-bottom: 10px;" class="btn btn-info " ng-click="addEmployee()">Add Employee</button>
+            <div class="col-md-12">
+
+                <div class="table-responsive">
+                  <form  id="empform"  ng-submit="submitEmployee()">
+                    <table id="mytable" class="table table-bordered">
+
+                        <thead>
+                        <th style="width:5%;">SNO</th>
+                         <th style="width:10%;">Emp#</th>
+                         <th style="width:15%;">Email</th>
+                        <th style="width:10%;">First Name</th>
+                        <th style="width:10%;">Last Name</th>
+                        <th style="width:15%;">Desginatin</th>
+            <th style="width:15%;">Project Name</th>
+            <th style="width:25%;">Actions</th>                     
+                        </thead>
+
+                        <tbody>
+                 
+              <tr ng-repeat="emp in empoyees">
+                <td>{{$index+1}}</td>
+                <td>
+                   <input  name="empId{{$index}}" ng-model="emp.empId" 
+                   ng-disabled="!enabledEdit[{{$index}}]"/>
+                  
+                </td>
+                <td>
+                   <input name="email{{$index}}" ng-model="emp.email"  ng-disabled="!enabledEdit[{{$index}}]" />
+                </td>
+                <td>
+                    <input name="firstName{{$index}}" ng-model="emp.firstName"  ng-disabled="!enabledEdit[{{$index}}]"/>
+                 </td>
+                <td>
+                   <input name="lastName{{$index}}" ng-model="emp.lastName"  ng-disabled="!enabledEdit[{{$index}}]"/>
+                </td>
+                <td>
+                  <input name="designation{{$index}}" ng-model="emp.designation"  ng-disabled="!enabledEdit[{{$index}}]"/>
+                </td>
+                 <td>
+                  <input name="project{{$index}}" ng-model="emp.project"  ng-disabled="!enabledEdit[{{$index}}]"/>
+                </td>
+                <td >
+                  <div class="buttons">
+                    <button class="btn btn-primary" ng-click="editEmployee($index)">Edit</button>
+                    <button class="btn btn-danger" ng-click="deleteEmployee($index)">Delete</button>
+                  </div>  
+                </td>
+              </tr>
+              
+                        </tbody>
+
+                    </table>
+                      <input type="submit" class="btn btn-primary" value="Submit" />
+                   </form>
+                    <div class="clearfix"></div>
+                 </div>
+
+            </div>
+  
+  </div>
+ 
+</body>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+   
+</html>
